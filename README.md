@@ -43,6 +43,17 @@ pessoa específica fazia login. Uma tentativa fracassada com rollback, duas rota
 de rede testadas e descartadas, oito dias perdidos num bug de contas homônimas —
 e um cutover que acabou se executando sozinho, em produção, sem intervenção.
 
+### 4. [O mesmo defeito, dois desfechos](casos/04-consolidacao-scripts-modulo.md)
+
+**Um cmdlet que devolve texto quando o código esperava objeto — usado em dois
+scripts diferentes, com dois resultados de gravidade oposta.**
+
+Consolidar 113 scripts soltos num módulo único revelou que a mesma suposição
+errada sobre uma API já tinha causado uma escrita silenciosa que apagou uma
+política de retenção em produção — descoberta só 25 dias depois — e, em outro
+script, apenas um falso negativo inofensivo. Projeto em andamento: a
+consolidação central segue parcial.
+
 ---
 
 ## Capturado × diagnosticado
@@ -54,6 +65,7 @@ A distinção aparece no cabeçalho de cada caso, e vale explicar o critério.
 | 1 — Licenciamento | **Remediação executada e verificada.** Parte da economia segue identificada e pendente. |
 | 2 — Ruído de alerta | **Diagnóstico apenas.** A correção foi proposta e priorizada; nunca foi aprovada nem aplicada. O ganho projetado não foi medido. |
 | 3 — Migração | **Remediação concluída e validada**, com ausência de perda demonstrada por diferença de conjuntos. |
+| 4 — Consolidação de scripts | **Em andamento.** Autenticação e isolamento de processo concluídos e validados; a consolidação central do código legado segue parcial. |
 
 Custo *identificado* é análise. Custo *capturado* é execução verificada. Misturar
 os dois infla o número e destrói a credibilidade do resto — então eles aparecem
